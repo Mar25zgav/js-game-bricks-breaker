@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Bricks Game</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="js/jscolor.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <div id="game">
+    <canvas id="bricks" width="800" height="600"></canvas>
+    <div id="scoreboard">
+      <p>Score: <label></label></p>
+    </div>
+  </div>
+
+  <div id="mainmenu" class="mainmenu">
+    <div class="mainmenu-content">
+      <h1>YOUR BRICKS BREAKER</h1>
+      <button id="playBtn" onclick="openGame()">PLAY</button><br/>
+      <button id="cmzBtn" onclick="openCustomize()">CUSTOMIZE</button><br />
+      <button id="leaderBoardBtn" onclick="openHighscores()">SCOREBOARD</button>
+      <button id="helpBtn" onclick="openHelp()"></button>
+    </div>
+  </div>
+
+  <div id="customize" class="customize">
+    <div class="customize-content">
+      <h2>Customize your game!</h2>
+      <table>
+        <tr>
+          <td>Background:</td>
+          <td><input id="input1" value="313638" class="jscolor" readonly></td>
+        </tr>
+        <tr>
+          <td>Main menu:</td>
+          <td><input id="input2" value="E8E9EB" class="jscolor" readonly></td>
+        </tr>
+        <tr>
+          <td>Paddle:</td>
+          <td><input id="input3" value="ffffff" class="jscolor" readonly></td>
+        </tr>
+        <tr>
+          <td>Ball:</td>
+          <td><input id="input4" value="00f7ce" class="jscolor" readonly></td>
+        </tr>
+        <tr>
+          <td>Bricks:</td>
+          <td><input id="input5" value="E8E9EB" class="jscolor" readonly></td>
+        </tr>
+        <tr>
+          <td>Brick rows:</td>
+          <td>
+              <input type="range" min="1" max="12" value="6" class="slider" id="brickRows">
+          </td>
+        </tr>
+        <tr>
+          <td>Difficulty:</td>
+          <td>
+              <input type="range" min="4" max="8" value="4" class="slider" id="diff">
+          </td>
+        </tr>
+      </table>
+      <button id="backBtn" onclick="openMainMenu(); setGame()"></button>
+    </div>
+  </div>
+
+  <div id="highscores" class="highscores">
+    <div class="highscores-content">
+      <h4>Scoreboard</h4>
+      <h6>No games played yet!</h6>
+      <table id="highscores-table">
+      <tr>
+        <td>Position</td>
+        <td>Name</td>
+        <td>Score</td>
+        <td>Difficulty</td>
+      </tr></table>
+      <button id="backBtn" onclick="openMainMenu()"></button>
+    </div>
+  </div>
+
+  <div id="help" class="help">
+    <h4>Instructions</h4>
+    <div class="help-content">
+      <div class="square">
+        <p class="help-p">Moving paddle</p>
+        <img src="img/arrowKeys.png" alt="arrowKeys" height="65" width="130">
+      </div>
+      <div class="square">
+        <p class="help-p">Pause game</p>
+        <img src="img/escKey.png" alt="escKey" height="45" width="45">
+      </div>
+      <div class="square">
+        <p class="help-p">Customize</p>
+        <p class="text">
+          Since this is Your Bricks Breaker you can completely change the look and the feel of the game to your liking in the Customize tab.
+        </p>
+      </div>
+      <div class="square">
+        <p class="help-p">Scoreboard</p>
+        <p class="text">
+          In the Scoreboard section, you can see the best players, who have already played this game. Can you beat their score?
+        </p>
+      </div>
+    </div>
+    <button id="backBtn" onclick="openMainMenu()"></button>
+  </div>
+
+  <div id="myPressToStart" class="pressToStart">
+    <div class="pressToStart-content">
+      <p class="game-p">PRESS SPACEBAR TO START</p>
+    </div>
+  </div>
+
+  <div id="myPause" class="pause">
+    <div class="pause-content">
+      <p class="game-p">GAME PAUSED</p>
+      <h3 class="game-p" onclick="backToMainMenuBtn()">Back to Main Menu</h3>
+    </div>
+  </div>
+
+  <div id="myCongrats" class="congrats">
+    <div class="congrats-content">
+      <p class="game-p">YOU WON!!</p>
+      <h3 class="game-p" onclick="backToMainMenuBtn()">Back to Main Menu</h3>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-header">
+      <div class="title">Enter your name:</div>
+    </div>
+    <div class="modal-body">
+      <input type="text" id="name" class="name" maxlength="10" required/>
+      <button type="submit" id="okBtn" onclick="getUserName()">OK</button>
+    </div>
+  </div>
+
+  <div id="overlay"></div>
+
+  <script src = "js/game.js"></script>
+</body>
+</html>
