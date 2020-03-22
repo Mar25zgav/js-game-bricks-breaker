@@ -1,4 +1,3 @@
-var lostWdw = document.getElementById("myLostWdw");
 var mainmenu = document.getElementById("mainmenu");
 var customize = document.getElementById('customize');
 var pressToStart = document.getElementById("myPressToStart");
@@ -75,6 +74,7 @@ document.addEventListener("keydown", function(event){
       if(pause.style.display == "block"){
         pause.style.display = "none";
         paused = false;
+        createBricks();
         loop();
       }else{
         pause.style.display = "block";
@@ -141,6 +141,7 @@ function resetGame(){
   ctx.clearRect(0, 0, cvs.width, cvs.height);
   paused = false;
   bricks = [];
+  LIFE = false;
   SCORE = 0;
   resetBall();
   drawBall();
@@ -221,15 +222,14 @@ function getDifficulty(diffNum){
 }
 
 function backToMainMenuBtn(){
-  LIFE--;
   gameOver();
   pause.style.display = "none";
-  pressToStart.style.display = "none";
-  scoreboard.style.visibility = "hidden";
-  mainmenu.style.display = "block";
   highscores.style.display = "none";
   congrats.style.display = "none";
   cvs.style.display = "none";
+  pressToStart.style.display = "none";
+  scoreboard.style.visibility = "hidden";
+  mainmenu.style.display = "block";
 }
 
 function openHelp(){
